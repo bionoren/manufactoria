@@ -26,4 +26,4 @@ Other statements are:
 
 * assert - condition should never occur (feel free to place random things in front of the output)
 
-I prefer to end lines with a ;, but it's not like there's a parser to care :)
+C-style comments (// and /**/) and python-style (#) are also supported. Semicolons are optional.
