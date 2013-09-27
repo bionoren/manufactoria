@@ -1,0 +1,3 @@
+contract @activestate.com/koLanguage?language=manufactoria;1 {ff792548-984e-499a-91b9-24cf2a1055be}
+category komodo-language manufactoria @activestate.com/koLanguage?language=manufactoria;1
+component {ff792548-984e-499a-91b9-24cf2a1055be} komanufactoria_UDL_Language.py

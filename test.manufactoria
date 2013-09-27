@@ -1,0 +1,141 @@
+/**
+  aaa|bbb*
+  | = green
+  * = yellow
+
+  1. Strip off any leading red
+  2. Assume a > b (a has a red before b does)
+  2a. If a > b assumption holds and len(a) >= len(b), accept
+  3. If len(a) < len(b), reject
+  4. If len(a) > len(b), accept
+*/
+
+//mark end
+ey;
+//strip leading reds
+ir [if1] {
+    go if1;
+} ib {
+    eb;
+} ie {
+    ig {
+        //a is zero
+        end;
+    } iy {
+        //b is zero (and a was nonzero)
+        ret;
+    } ie {
+        assert;
+    }
+}
+ir [if2] { //move tape to the next marker
+    er;
+    go if2;
+} ib {
+    eb;
+    go if2;
+} ie {
+}
+ig [if3] {
+    eg;
+    go [if1];
+} iy {
+    ey;
+} ie {
+    assert;
+}
+//assume equal length and check for blue before red
+ib [if4] { //check a
+    ib [if5] { //move tape to the next marker
+        eb;
+        go if5;
+    } ir {
+        er;
+        go if5;
+    } ie {
+    }
+    ig [if6] {
+        eg;
+    } iy {
+        ey;
+        go if4;
+    } ie {
+        assert;
+    }
+    ib [if7] { //check b
+        go if5;
+    } ir {
+        //assert len(a) >= len(b)
+        ib [if15] { //move to end
+            eb;
+            go if15;
+        } ir {
+            er;
+            go if15;
+        } ie {
+        }
+        ig [if16] {
+            eg;
+        } iy {
+            ey;
+        } ie {
+            //pass for ret hack (there should only be a green on the tape at this point)
+        }
+        ib [if17] { //check
+        } ir {
+        } ie {
+            ig [if18] { //end of a
+                ib [] { //see if there's still one on b
+                    end;
+                } ir {
+                    end;
+                } ie {
+                    ret;
+                }
+            } iy { //end of b
+                ret;
+            } ie {
+                assert;
+            }
+        }
+        go if15;
+    } ie {
+        //a is longer than b
+        ret;
+    }
+} ir {
+    ib [if8] { //move tape to the next marker
+        eb;
+        go if8;
+    } ir {
+        er;
+        go if8;
+    } ie {
+    }
+    ig [if9] {
+        eg;
+    } iy {
+        ey;
+        go if4;
+    } ie {
+        assert;
+    }
+    ib [if10] { //check b
+        //assert len(a) > len(b)
+        eb;
+        go if15;
+    } ir {
+        go if8;
+    } ie {
+        //a is longer than b
+        ret;
+    }
+} ie {
+    ig [if19] {
+        end;
+    } iy {
+        go 15; //ret hack
+    } ie {
+        assert;
+    }
+}
